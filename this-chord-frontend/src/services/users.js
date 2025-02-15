@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const baseURL = "http://localhost:3001/api/users";
+const ip = "67.84.35.204";
+const baseURL = `http://${ip}:3001/api/users`;
 
 const getUsers = () => {
   return axios.get(baseURL).then((response) => response.data);
@@ -22,4 +23,4 @@ const updateUser = (id, updatedUser) => {
     .then((response) => response.data);
 };
 
-export default { getUsers, addUser, deleteUser, updateUser };
+export default { ip, getUsers, addUser, deleteUser, updateUser };

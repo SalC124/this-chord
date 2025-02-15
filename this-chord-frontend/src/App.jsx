@@ -52,8 +52,19 @@ function App() {
   };
 
   const IsLoggedIn = () => {
-    return userObject.token ? (<p>You are logged in as {userObject.username}</p>) : (<p>You are not logged in</p>)
+    return userObject.token ? (
+      <div>
+        <p>You are logged in as {userObject.username}</p>
+        <h1>Messages</h1>
+        <div className="card">
+          <MsgList msgs={msgs} />
+        </div>
+      </div>
+    ) : (
+      <p>You are not logged in. In order to see messages, you must do so</p>
+    )
   }
+
 
   return (
     <>
@@ -71,14 +82,11 @@ function App() {
           onChange={(e) => setPassword(e.target.value)}
         />
         <button type="submit">Log In</button>
-        <IsLoggedIn />
-
       </form>
-      <h1>Messages</h1>
+
       {/*}<MsgSearch msgs={msgs} />{*/}
-      <div className="card">
-        <MsgList msgs={msgs} />
-      </div>
+
+      <IsLoggedIn />
 
       <div id="text-input-container">
         <AddMsg handleSubmit={handleAddMsg} />

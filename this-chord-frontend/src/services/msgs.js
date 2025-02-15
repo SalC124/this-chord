@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const baseURL = "http://localhost:3001/api/msgs";
+const ip = "67.84.35.204";
+const baseURL = `http://${ip}:3001/api/msgs`;
 
 const getMsgs = () => {
   return axios.get(baseURL).then((response) => response.data);
