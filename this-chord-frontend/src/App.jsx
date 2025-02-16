@@ -5,12 +5,10 @@ import MsgList from './components/MsgList';
 
 // import MsgSearch from './components/MsgSearch';
 import msgService from "./services/msgs.js"
-import userService from "./services/users.js"
 import loginService from './services/login.js';
 
 function App() {
   const [msgs, setMsgs] = useState([]);
-  const [users, setUsers] = useState([]);
 
   const [username, setUsername] = useState([]);
   const [password, setPassword] = useState([]);
@@ -20,7 +18,6 @@ function App() {
     msgService.getMsgs().then((data) => setMsgs(data))
     const interval = setInterval(() => {
       msgService.getMsgs().then((data) => setMsgs(data));
-      userService.getUsers().then((data) => setUsers(data));
       console.log("updated tings")
     }, 500);
     return () => clearInterval(interval);
