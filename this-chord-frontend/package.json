@@ -4,7 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --host",
+    "dev": "VITE_BACKEND_IP=localhost vite --host",
+    "start": "export VITE_BACKEND_IP=67.84.35.204 && vite --host",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"

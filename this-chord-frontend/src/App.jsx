@@ -4,9 +4,9 @@ import AddMsg from './components/AddMsg';
 import MsgList from './components/MsgList';
 
 // import MsgSearch from './components/MsgSearch';
-import msgService from "./services/msgs"
-import userService from "./services/users"
-import loginService from './services/login';
+import msgService from "./services/msgs.js"
+import userService from "./services/users.js"
+import loginService from './services/login.js';
 
 function App() {
   const [msgs, setMsgs] = useState([]);

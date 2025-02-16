@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const ip = "67.84.35.204";
+const ip = import.meta.env.VITE_BACKEND_IP;
 const baseURL = `http://${ip}:3001/api/users`;
 
 const getUsers = () => {
