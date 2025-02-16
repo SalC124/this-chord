@@ -22,7 +22,7 @@ function App() {
       msgService.getMsgs().then((data) => setMsgs(data));
       userService.getUsers().then((data) => setUsers(data));
       console.log("updated tings")
-    }, 1000);
+    }, 500);
     return () => clearInterval(interval);
   }, []);
 

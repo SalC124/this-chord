@@ -5,9 +5,9 @@ const MsgList = ({ msgs }) => {
 
   return (
     <>
-      {reversedMsgs.map((msg) => (
+      {msgs.map((msg) => (
         <div key={msg.id}>
-          <p>[{msg.user.username}]$ {msg.content}</p>
+          <p>[{msg.user.username}] {msg.content}</p>
         </div>
       ))}
     </>
