@@ -50,13 +50,13 @@ function App() {
 
   const IsLoggedIn = () => {
     return userObject.token ? (
-      <div>
+      <>
         <p>You are logged in as {userObject.username}</p>
         <h1>Messages</h1>
-        <div className="card">
+        <main>
           <MsgList msgs={msgs} />
-        </div>
-      </div>
+        </main>
+      </>
     ) : (
       <p>You are not logged in. In order to see messages, you must do so</p>
     )
