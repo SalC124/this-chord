@@ -12,7 +12,7 @@ const extractToken = (req) => {
 };
 
 msgsRouter.post("/", async (req, res) => {
-  const { content } = req.body;
+  const { content, time } = req.body;
   const tokenPayload = jwt.verify(extractToken(req), process.env.JWT_SECRET);
   if (!tokenPayload.id) return res.status(401).json({ error: "invalid token" });
 
@@ -20,10 +20,13 @@ msgsRouter.post("/", async (req, res) => {
   if (!user) {
     return res.status(404).json({ error: "user not found" });
   }
+  if (!time) {
+    return res.status(401).json({ error: "time not found" });
+  }
   if (!content) {
     return res.status(400).json({ error: "content is required" });
   } else {
-    const msg = new Msg({ content, user: user._id });
+    const msg = new Msg({ content, user: user._id, time });
     const savedMsg = await msg.save();
     user.msgs = [...user.msgs, savedMsg._id];
     await user.save();
@@ -32,7 +35,7 @@ msgsRouter.post("/", async (req, res) => {
 });
 
 msgsRouter.get("/", async (req, res) => {
-  const msgs = await Msg.find({}).populate("user", { username: 1, content: 1 });
+  const msgs = await Msg.find({}).populate("user", { username: 1, content: 1, time: 1 });
   res.json(msgs);
 });
 

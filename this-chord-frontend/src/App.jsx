@@ -43,7 +43,7 @@ function App() {
     const token = userObject.token;
     if (newMsg.trim() !== "") {
       setNewMsg("");
-      msgService.addMsg(newMsg.trim(), token);
+      msgService.addMsg(newMsg.trim(), token, Date.now());
       msgService.getMsgs();
     }
   };
@@ -84,10 +84,10 @@ function App() {
       {/*}<MsgSearch msgs={msgs} />{*/}
 
       <IsLoggedIn />
-
       <div id="text-input-container">
         <AddMsg handleSubmit={handleAddMsg} />
       </div>
+
     </>
   );
 }

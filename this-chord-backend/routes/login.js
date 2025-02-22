@@ -10,7 +10,7 @@ loginRouter.post("/", async (req, res) => {
   const user = await User.findOne({ username: username });
 
   const passCheck = user
-    ? await bcrypt.compare(password, user.passwordHash)
+    ? bcrypt.compare(password, user.passwordHash)
     : false;
 
   if (!passCheck) {

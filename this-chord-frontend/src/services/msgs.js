@@ -5,13 +5,13 @@ const ip = (import.meta.env.VITE_BACKEND_IP)
   : "localhost";
 const baseURL = `http://${ip}:3001/api/msgs`;
 
-const getMsgs = () => {
-  return axios.get(baseURL).then((response) => response.data);
+const getMsgs = async () => {
+  return await axios.get(baseURL).then((response) => response.data);
 };
 
-const addMsg = (newMsg, token) => {
-  return axios
-    .post(baseURL, { content: newMsg.trim() }, {
+const addMsg = async (newMsg, token, time) => {
+  return await axios
+    .post(baseURL, { content: newMsg.trim(), time: time }, {
       headers: {
         'Authorization': `Bearer ${token}`
       }
@@ -19,12 +19,12 @@ const addMsg = (newMsg, token) => {
     .then((response) => response.data);
 };
 
-const deleteMsg = (id) => {
-  return axios.delete(`${baseURL}/${id}`).then((response) => response.data);
+const deleteMsg = async (id) => {
+  return await axios.delete(`${baseURL}/${id}`).then((response) => response.data);
 };
 
-const updateMsg = (id, updatedMsg) => {
-  return axios
+const updateMsg = async (id, updatedMsg) => {
+  return await axios
     .put(`${baseURL}/${id}`, updatedMsg)
     .then((response) => response.data);
 };

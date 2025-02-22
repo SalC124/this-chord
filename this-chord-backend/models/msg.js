@@ -13,6 +13,7 @@ const msgSchema = new mongoose.Schema({
     required: true,
     ref: "User",
   },
+  time: { type: Number, required: true },
 });
 
 // configure toJSON method
